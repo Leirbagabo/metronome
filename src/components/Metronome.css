@@ -15,6 +15,7 @@
   width: 300px;
   height: 350px;
   justify-content: space-between;
+  user-select: none;
 }
 
 .bpm-display {
@@ -115,6 +116,7 @@ input[type="range"]::-moz-range-track {
   line-height: 50px;
   margin: 0 auto;
   cursor: pointer;
+  text-transform: uppercase;
 }
 
 .start-stop:hover {
@@ -145,8 +147,8 @@ input[type="range"]::-moz-range-track {
   line-height: 21px;
 }
 
-.beats-per-measuse-text{
-text-align: center;
-font-size: 0.6em;
-text-transform: uppercase;
+.beats-per-measuse-text {
+  text-align: center;
+  font-size: 0.6em;
+  text-transform: uppercase;
 }
