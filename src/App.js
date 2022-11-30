@@ -47,13 +47,13 @@ function App() {
   }, [bpm]);
 
   function decreaseTempo() {
-    // setPlaying(!playing);
+    setPlaying(false);
     resetTimer();
     setBpm(bpm > 10 ? bpm - 1 : (bpm = 10));
   }
 
   function increaseTempo() {
-    // setPlaying(!playing);
+    setPlaying(false);
     resetTimer();
     setBpm(bpm < 280 ? bpm + 1 : (bpm = 280));
   }
@@ -69,7 +69,7 @@ function App() {
   };
 
   function subtracBeat() {
-    // setPlaying(!playing);
+    setPlaying(false);
     resetTimer();
     setBeatsPerMeasure(
       beatsPerMeasure > 1 ? beatsPerMeasure - 1 : beatsPerMeasure
@@ -77,7 +77,7 @@ function App() {
   }
 
   function addBeat() {
-    // setPlaying(!playing);
+    setPlaying(false);
     resetTimer();
 
     setBeatsPerMeasure(
