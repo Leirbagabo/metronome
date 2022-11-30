@@ -8,6 +8,13 @@ function App() {
   const [bpm, setBpm] = useState(140);
   const [beatsPerMeasure, setBeatsPerMeasure] = useState(4);
   const [tempoExpression, setTempoExpression] = useState("allegro");
+  const [playing, setPlaying] = useState(false);
+  const [timer, setTimer] = useState(0);
+
+  const click1 = new Audio("/click1.mp3");
+  const click2 = new Audio("/click2.mp3");
+
+  let count = 0;
 
   useEffect(() => {
     if (bpm < 20) {
@@ -83,19 +90,6 @@ function App() {
   // // es porque quiero agarrar el bpm por ejemplo como variable global
   // y a futuro sincronizarla con la aparicion de proposiciones ritmicas
 
-  const [playing, setPlaying] = useState(false);
-  const [timer, setTimer] = useState(0);
-
-  const click1 = new Audio("/click1.mp3");
-  const click2 = new Audio("/click2.mp3");
-
-  let count = 0;
-
-  // function play() {
-  //    click1.play();
-
-  // }
-
   function handleStartStop() {
     setPlaying(!playing);
     if (!playing) {
@@ -120,17 +114,7 @@ function App() {
     setTimer(0);
   }
 
-  //  const handlePlay = () => {
-  //   if(playing){
-  //     setPlaying (false)
-  //     clearInterval(play)
-  //   }else{
-  //     setPlaying (true);
-  //     setInterval(play, (60/bpm) * 1000)
-  //   }
-
-  // }
-
+  //hice esto de a continuacion porque de lo contrario el boton no hacia toggle:
   let text;
 
   if (playing) {
@@ -139,7 +123,7 @@ function App() {
     text = "play";
   }
 
-  console.log(playing);
+  // y esto lo use pa debuggear algo pero ya no lo necesito ---> console.log(playing);
 
   return (
     <div className="App">
