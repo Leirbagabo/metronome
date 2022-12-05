@@ -90,10 +90,40 @@ function App() {
   // // es porque quiero agarrar el bpm por ejemplo como variable global
   // y a futuro sincronizarla con la aparicion de proposiciones ritmicas
 
+
+
+// desde aqui i realize setInterval was inacurate as heck 
+//so i decide to calculate the difference between the starting click an the real click action in ms 
+//then substract that difference in realtime on each iteration inside the setInterval it self
+//que el codigo que est[e comentado lo quite dice gg  
+
+
+   let start;
+   let diff;
+   let drift;
+
+// var f = function() {
+//     if (!start) start = new Date().getTime();
+//     var diff = new Date().getTime() - start;
+//     var drift = diff % 1000;
+//     console.log(drift + 'ms');
+// };
+
+// setInterval(f, 1000);
+
   function handleStartStop() {
+    // var start = Date.now();
+    // var delta = Date.now() - start;
+    // var seg= Math.floor(delta/1000);
+
     setPlaying(!playing);
     if (!playing) {
-      setTimer(setInterval(play, (60 / bpm) * 1000));
+      start = new Date().getTime();
+       diff = new Date().getTime() - start;
+     drift = diff % 1000;
+    // console.log(drift + 'ms');
+
+      setTimer(setInterval(play, (60 / bpm) * (1000 - drift) /*deberia ser mas bien la diferencia diff*/));
       count = 0;
     } else {
       resetTimer();
@@ -101,6 +131,14 @@ function App() {
   }
 
   function play() {
+    // let start= new Date().getTime();
+    // let diff = new Date().getTime() - start;
+    // let drift = diff % 1000
+
+    // console.log(start)
+    // console.log(diff)
+    // console.log(drift)
+
     if (count % beatsPerMeasure === 0) {
       click1.play();
     } else {
